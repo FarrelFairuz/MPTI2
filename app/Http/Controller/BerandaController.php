@@ -76,25 +76,27 @@ class BerandaController extends Controller
      */
     private function ambilDataKamar(): array
     {
-        // Coba ambil dari session terlebih dahulu
         if (session()->has('data_ketersediaan_kamar')) {
             return session('data_ketersediaan_kamar');
         }
 
-        // Data default: semua bulan penuh
-        return [
-            'Januari 2026'   => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Februari 2026'  => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Maret 2026'     => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'April 2026'     => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Mei 2026'       => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Juni 2026'      => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Juli 2026'      => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Agustus 2026'   => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'September 2026' => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Oktober 2026'   => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'November 2026'  => ['tersedia' => false, 'jumlah_kamar' => 0],
-            'Desember 2026'  => ['tersedia' => false, 'jumlah_kamar' => 0],
+        // Otomatis ambil tahun berjalan
+        $tahun = date('Y');
+
+        $bulanList = [
+            'Januari', 'Februari', 'Maret', 'April',
+            'Mei', 'Juni', 'Juli', 'Agustus',
+            'September', 'Oktober', 'November', 'Desember'
         ];
+
+        $data = [];
+        foreach ($bulanList as $bulan) {
+            $data[$bulan . ' ' . $tahun] = [
+                'tersedia'     => false,
+                'jumlah_kamar' => 0,
+            ];
+        }
+
+        return $data;
     }
 }
