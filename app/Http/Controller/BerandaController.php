@@ -24,12 +24,26 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        // Ambil data ketersediaan kamar yang disimpan admin
-        // Jika belum ada di database, gunakan data default (semua penuh)
         $dataKamar = $this->ambilDataKamar();
-
-        // Kirim data ke view beranda
         return view('beranda', compact('dataKamar'));
+    }
+
+    public function sewaTenda()
+    {
+        $dataKamar = $this->ambilDataKamar();
+        return view('sewa-tenda', compact('dataKamar'));
+    }
+
+    public function kostPutri()
+    {
+        $dataKamar = $this->ambilDataKamar();
+        return view('kost-putri', compact('dataKamar'));
+    }
+
+    public function testimoni()
+    {
+        $dataKamar = $this->ambilDataKamar();
+        return view('testimoni-page', compact('dataKamar'));
     }
 
     /**

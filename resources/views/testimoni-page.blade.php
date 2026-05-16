@@ -4,11 +4,10 @@
   {{-- Navbar, Modal Login Admin, Panel Admin --}}
   @include('sections.navbar')
 
-  {{-- Hero Section --}}
-  @include('sections.hero')
+  <div style="padding-top: 100px;"></div>
 
-  {{-- Section Kontak, Lokasi & Footer --}}
-  @include('sections.kontak')
+  {{-- Section Testimoni --}}
+  @include('sections.testimoni')
 @endsection
 
 @include('sections.scripts')

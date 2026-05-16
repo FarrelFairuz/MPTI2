@@ -18,12 +18,12 @@
           <span class="price-from">/ Tahun</span>
         </div>
         <div class="facilities-grid">
-          <div class="facility-item"><span style="width:24px;text-align:center">📶</span> WiFi Kecepatan Tinggi</div>
-          <div class="facility-item"><span style="width:24px;text-align:center">🔒</span> Keamanan 24 Jam &amp; CCTV</div>
-          <div class="facility-item"><span style="width:24px;text-align:center">🚗</span> Parkir Luas</div>
-          <div class="facility-item"><span style="width:24px;text-align:center">🚿</span> Kamar Mandi Dalam</div>
-          <div class="facility-item"><span style="width:24px;text-align:center">🧹</span> Kebersihan Terjaga</div>
-          <div class="facility-item"><span style="width:24px;text-align:center">📍</span> Lokasi Strategis</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="wifi"></i></span> WiFi Kecepatan Tinggi</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="shield-check"></i></span> Keamanan 24 Jam &amp; CCTV</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="car"></i></span> Parkir Luas</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="bath"></i></span> Kamar Mandi Dalam</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="sparkles"></i></span> Kebersihan Terjaga</div>
+          <div class="facility-item"><span style="width:24px;display:flex;justify-content:center"><i data-lucide="map-pin"></i></span> Lokasi Strategis</div>
         </div>
         <div style="margin-top:1.5rem">
           <div style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px">Cek Ketersediaan Kamar</div>

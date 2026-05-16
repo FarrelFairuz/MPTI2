@@ -17,6 +17,9 @@ use App\Http\Controller\PemesananController;
 // ─── HALAMAN UTAMA ─────────────────────────────────────────────
 // Menampilkan halaman beranda lengkap dengan semua section
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/sewa-tenda', [BerandaController::class, 'sewaTenda'])->name('sewa-tenda');
+Route::get('/kost-putri', [BerandaController::class, 'kostPutri'])->name('kost-putri');
+Route::get('/testimoni', [BerandaController::class, 'testimoni'])->name('testimoni');
 
 // ─── API CEK KETERSEDIAAN KAMAR KOST ───────────────────────────
 // Dipanggil via JavaScript (fetch/AJAX) ketika pengunjung klik tombol "Cek"
