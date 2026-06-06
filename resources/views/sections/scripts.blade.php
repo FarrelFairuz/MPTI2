@@ -387,7 +387,9 @@
     .then(function(res) { return res.json(); })
     .then(function(data) {
       if (data.status === 'berhasil') {
-        sudahLogin = true; tutupLogin();
+        sudahLogin = true;
+        localStorage.setItem('adminLoggedIn', 'true');
+        tutupLogin();
         document.getElementById('btnAdminLogin').style.display  = 'none';
         document.getElementById('btnAdminLogout').style.display = 'flex';
         buatPanelAdmin();
@@ -403,16 +405,21 @@
 
   function adminLogout() {
     fetch(urlLogoutAdmin, { method:'POST', headers:{'X-CSRF-TOKEN':csrfToken} })
-    .finally(function() {
-      sudahLogin = false;
-      document.getElementById('btnAdminLogin').style.display  = 'flex';
-      document.getElementById('btnAdminLogout').style.display = 'none';
-      document.getElementById('adminPanel').classList.remove('show');
-    });
+    .then(function() {
+        sudahLogin = false;
+        localStorage.removeItem('adminLoggedIn');
+        document.getElementById('btnAdminLogin').style.display  = 'flex';
+        document.getElementById('btnAdminLogout').style.display = 'none';
+        document.getElementById('adminPanel').classList.remove('show');
+    })
+    .catch(function(err) { console.error('Logout error:', err); });
   }
 
   function togglePanel() {
-    if (!sudahLogin) return;
+    if (!sudahLogin) {
+      bukaLogin();
+      return;
+    }
     document.getElementById('adminPanel').classList.toggle('show');
   }
 
@@ -507,7 +514,15 @@
     var kontainer = document.getElementById('historyPemesananList');
     kontainer.innerHTML = '<div style="text-align:center;color:var(--muted);padding:1rem;font-size:.85rem">Memuat data...</div>';
     fetch(urlDaftarPemesanan, { headers:{'X-CSRF-TOKEN':csrfToken} })
-    .then(function(res) { return res.json(); })
+    .then(function(res) {
+      if (res.status === 403 || res.status === 401) {
+        localStorage.removeItem('adminLoggedIn');
+        sudahLogin = false;
+        location.reload();
+        throw new Error('Unauthorized');
+      }
+      return res.json();
+    })
     .then(function(data) {
       if (!data.data || data.data.length === 0) {
         kontainer.innerHTML = '<div style="text-align:center;color:var(--muted);padding:1rem;font-size:.85rem">Belum ada pemesanan masuk.</div>';
@@ -531,6 +546,19 @@
     .catch(function() {
       kontainer.innerHTML = '<div style="text-align:center;color:#ff6b6b;padding:1rem;font-size:.85rem">Gagal memuat data.</div>';
     });
+  }
+
+  // Inisialisasi status admin saat halaman dimuat
+  if (localStorage.getItem('adminLoggedIn') === 'true') {
+      sudahLogin = true;
+      var btnLogin = document.getElementById('btnAdminLogin');
+      var btnPanel = document.getElementById('btnAdminLogout');
+      if (btnLogin) btnLogin.style.display = 'none';
+      if (btnPanel) btnPanel.style.display = 'flex';
+      if (document.getElementById('adminPanel')) {
+          buatPanelAdmin();
+          document.getElementById('adminPanel').classList.add('show');
+      }
   }
 
   // Inisialisasi aman
