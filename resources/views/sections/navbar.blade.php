@@ -14,14 +14,14 @@
       <a href="{{ route('sewa-tenda') }}" class="{{ request()->routeIs('sewa-tenda') ? 'active' : '' }}">Sewa Tenda</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title"><i data-lucide="tent" style="display:inline-block; vertical-align:-4px; margin-right:4px;"></i> Sewa Tenda</div>
-        <div class="nav-dropdown-desc">Solusi perlengkapan acara dengan berbagai pilihan tenda VIP, roder, plafon, hingga kursi dan meja.</div>
+        <div class="nav-dropdown-desc">Solusi perlengkapan acara dengan berbagai pilihan jenis tenda.</div>
       </div>
     </li>
     <li>
       <a href="{{ route('kost-putri') }}" class="{{ request()->routeIs('kost-putri') ? 'active' : '' }}">Kost Putri</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title"><i data-lucide="home" style="display:inline-block; vertical-align:-4px; margin-right:4px;"></i> Kost Putri</div>
-        <div class="nav-dropdown-desc">Hunian kost putri premium dengan fasilitas lengkap, aman, dan nyaman di pusat kota.</div>
+        <div class="nav-dropdown-desc">Hunian kost putri premium dengan fasilitas lengkap dan aman.</div>
       </div>
     </li>
     <li><a href="{{ route('testimoni') }}" class="{{ request()->routeIs('testimoni') ? 'active' : '' }}">Testimoni</a></li>

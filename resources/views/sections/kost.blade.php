@@ -69,30 +69,31 @@
           💬 Tanya via WhatsApp
         </a>
       </div>
-      <div class="kost-gallery-grid">
-        <button type="button" class="gallery-thumb gallery-thumb-large" data-lightbox-index="0" aria-label="Buka foto 1">
-          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="Kamar Kost Utama">
+      <div class="kost-gallery-grid" data-lightbox-group="kost">
+        <button type="button" class="gallery-thumb" data-lightbox-index="0" aria-label="Buka foto 1">
+          <img src="/images/1.jpeg" alt=" Koridor Kost">
           <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
         </button>
         <button type="button" class="gallery-thumb" data-lightbox-index="1" aria-label="Buka foto 2">
-          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="Ruang Kost">
+          <img src="/images/2.jpeg" alt=" Depan Kamar Kost">
           <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
         </button>
         <button type="button" class="gallery-thumb" data-lightbox-index="2" aria-label="Buka foto 3">
-          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=400&q=80" alt="Fasilitas Kost">
+          <img src="/images/3.jpeg" alt=" Dalam Kamar Kost">
           <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
         </button>
-      </div>
-      <div class="lightbox-overlay" id="kostLightbox" aria-hidden="true">
-        <div class="lightbox-inner" role="dialog" aria-modal="true">
-          <button type="button" class="lightbox-close" aria-label="Tutup galeri"><i data-lucide="x"></i></button>
-          <button type="button" class="lightbox-nav lightbox-prev" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button>
-          <div class="lightbox-content">
-            <img src="" alt="" id="lightboxImage">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-          </div>
-          <button type="button" class="lightbox-nav lightbox-next" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
-        </div>
+        <button type="button" class="gallery-thumb" data-lightbox-index="3" aria-label="Buka foto 4">
+          <img src="/images/4.jpeg" alt=" Parkir Mobil">
+          <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
+        </button>
+        <button type="button" class="gallery-thumb" data-lightbox-index="4" aria-label="Buka foto 5">
+          <img src="/images/5.jpeg" alt="Parkir Motor">
+          <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
+        </button>
+        <button type="button" class="gallery-thumb" data-lightbox-index="5" aria-label="Buka foto 6">
+          <img src="/images/6.jpeg" alt=" Gazebo Kost">
+          <span class="gallery-overlay"><i data-lucide="zoom-in"></i></span>
+        </button>
       </div>
     </div>
   </div>

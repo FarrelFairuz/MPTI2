@@ -32,10 +32,10 @@
   </div>
 
   <div class="hero-right">
-    <div class="hero-photo-grid">
-      <div class="hero-photo-card hero-photo-large" style="background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80');"></div>
-      <div class="hero-photo-card hero-photo-small" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80');"></div>
-      <div class="hero-photo-card hero-photo-small" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80');"></div>
+    <div class="hero-photo-grid" data-lightbox-group="hero">
+      <button type="button" class="hero-photo-card hero-photo-large" data-lightbox-index="0" aria-label="Contoh tenda" style="background-image:url('/images/Tenda_potrait.jpeg');"><span class="hero-photo-overlay"><i data-lucide="zoom-in"></i></span></button>
+      <button type="button" class="hero-photo-card hero-photo-small" data-lightbox-index="1" aria-label="Gedung Kost" style="background-image:url('/images/Kost.jpeg');"><span class="hero-photo-overlay"><i data-lucide="zoom-in"></i></span></button>
+      <button type="button" class="hero-photo-card hero-photo-small" data-lightbox-index="2" aria-label="Detail tenda" style="background-image:url('/images/Tenda_Sentris1.jpeg');"><span class="hero-photo-overlay"><i data-lucide="zoom-in"></i></span></button>
     </div>
     <div class="hero-expertise-card">
       <div class="hero-expertise-header">

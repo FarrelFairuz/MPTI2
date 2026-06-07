@@ -72,8 +72,14 @@
     .hero-desc-deco{color:var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center}
     .hero-desc-deco svg{display:block;width:28px;height:28px;}
     .hero-right{display:grid;gap:1.25rem;align-self:center;position:relative;z-index:2;padding:5rem 0}
-    .hero-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(180px,1fr));gap:1rem}
-    .hero-photo-card{border-radius:24px;background-size:cover;background-position:center;border:1px solid rgba(201,168,76,0.25);box-shadow:0 20px 40px rgba(0,0,0,0.35);min-height:220px}
+    .hero-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(180px,1fr));gap:1rem;position:relative}
+    .hero-photo-card{border-radius:24px;background-size:cover;background-position:center;border:1px solid rgba(201,168,76,0.25);box-shadow:0 20px 40px rgba(0,0,0,0.35);min-height:220px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s ease;border:none;padding:0;display:flex;align-items:center;justify-content:center}
+    .hero-photo-card:hover{transform:translateY(-2px)}
+    .hero-photo-card::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s ease;z-index:1}
+    .hero-photo-card:hover::before{background:rgba(0,0,0,0.4)}
+    .hero-photo-overlay{position:relative;display:flex;align-items:center;justify-content:center;z-index:2}
+    .hero-photo-overlay i{width:40px;height:40px;color:#fff;opacity:0;transition:opacity .3s ease}
+    .hero-photo-card:hover .hero-photo-overlay i{opacity:1}
     .hero-photo-large{grid-row:1 / span 2;min-height:480px}
     .hero-photo-small{min-height:220px}
     .hero-expertise-card{background:rgba(15,15,15,0.95);border:1px solid rgba(201,168,76,0.35);border-radius:24px;padding:2rem;color:var(--white);box-shadow:0 25px 60px rgba(0,0,0,0.35)}
@@ -172,28 +178,31 @@
 
     /* ── KOST ── */
     .kost-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-    .kost-gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:180px 180px;gap:4px}
-    .kost-gallery-grid img{width:100%;height:100%;object-fit:cover;transition:.3s}
-    .kost-gallery-grid img:hover{opacity:.8}
-    .gallery-thumb{position:relative;display:block;cursor:pointer;overflow:hidden;border-radius:8px;transition:transform .3s ease}
-    .gallery-thumb-large{grid-row:span 2}
-    .gallery-thumb:hover{transform:translateY(-2px)}
-    .gallery-thumb img{display:block;width:100%;height:100%;object-fit:cover}
-    .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);opacity:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease}
+    .kost-gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .kost-gallery-grid .gallery-thumb{position:relative;display:block;cursor:pointer;overflow:hidden;border-radius:12px;aspect-ratio:4/3;transition:transform .24s ease}
+    .kost-gallery-grid .gallery-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+    .kost-gallery-grid .gallery-thumb:hover{transform:translateY(-4px)}
+    .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.24);opacity:0;display:flex;align-items:center;justify-content:center;transition:opacity .18s ease}
     .gallery-overlay i{width:32px;height:32px;color:#fff;stroke-width:1.8}
     .gallery-thumb:hover .gallery-overlay{opacity:1}
-    .lightbox-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(0,0,0,0.9);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:9999}
+
+    @media (max-width: 768px) {
+      .kost-gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+      .kost-gallery-grid .gallery-thumb{aspect-ratio:4/3;height:150px}
+      .kost-gallery-grid .gallery-thumb img{height:100%;width:100%;object-fit:cover}
+    }
+    .lightbox-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(0,0,0,0.95);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:9999}
     .lightbox-overlay.open{opacity:1;pointer-events:auto}
-    .lightbox-inner{position:relative;width:min(95vw,1080px);max-width:1080px;display:flex;align-items:center;justify-content:center}
+    .lightbox-inner{position:relative;width:min(90vw,1080px);max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .lightbox-content{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
-    .lightbox-content img{width:100%;max-width:100%;max-height:min(80vh,calc(100vh - 160px));border-radius:16px;box-shadow:0 28px 70px rgba(0,0,0,0.5)}
+    .lightbox-content img{max-width:100%;max-height:90vh;object-fit:contain;width:auto;height:auto;border-radius:16px;box-shadow:0 28px 70px rgba(0,0,0,0.5)}
     .lightbox-caption{margin-top:.85rem;font-size:.95rem;color:rgba(255,255,255,0.82);text-align:center}
-    .lightbox-close,.lightbox-nav{position:absolute;width:42px;height:42px;border-radius:50%;border:none;background:rgba(0,0,0,0.45);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s}
+    .lightbox-close,.lightbox-nav{position:fixed;width:42px;height:42px;border-radius:50%;border:none;background:rgba(0,0,0,0.45);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s;z-index:10001}
     .lightbox-close:hover,.lightbox-nav:hover{background:rgba(255,255,255,0.12);transform:scale(1.03)}
-    .lightbox-close{top:-10px;right:-10px;z-index:2}
-    .lightbox-nav{top:50%;transform:translateY(-50%);z-index:2}
-    .lightbox-prev{left:-10px}
-    .lightbox-next{right:-10px}
+    .lightbox-close{top:16px;right:16px}
+    .lightbox-nav{top:50%;transform:translateY(-50%)}
+    .lightbox-prev{left:16px}
+    .lightbox-next{right:16px}
     .price-tag{position:relative;display:inline-flex;align-items:baseline;gap:.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);padding:.75rem 1.25rem;border-radius:8px;margin-bottom:1.5rem}
     .price-badge{position:absolute;top:-10px;right:-10px;background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;letter-spacing:.5px;box-shadow:0 0 0 0 rgba(201,168,76,0.3);animation:pulseBadge 2.2s ease-in-out infinite}
     .price-note{font-size:12px;color:var(--gold);font-style:italic;margin-top:-.8rem;margin-bottom:1.25rem}
@@ -488,6 +497,12 @@
 {{-- KONTEN HALAMAN — diisi oleh view yang meng-extend layout ini    --}}
 {{-- ════════════════════════════════════════════════════════════════ --}}
 @yield('konten')
+
+<div id="lightboxOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;">
+  <img id="lightboxImg" style="max-width:85vw; max-height:85vh; object-fit:contain; border-radius:8px;">
+  <button id="lightboxClose" style="position:fixed; top:20px; right:20px; width:42px; height:42px; border:none; border-radius:50%; background:rgba(0,0,0,0.45); color:#fff; font-size:1.5rem; cursor:pointer;">×</button>
+  <button id="lightboxPrev" style="position:fixed; left:16px; top:50%; transform:translateY(-50%); width:42px; height:42px; border:none; border-radius:50%; background:rgba(0,0,0,0.45); color:#fff; font-size:1.5rem; cursor:pointer;">‹</button>
+  <button id="lightboxNext" style="position:fixed; right:16px; top:50%; transform:translateY(-50%); width:42px; height:42px; border:none; border-radius:50%; background:rgba(0,0,0,0.45); color:#fff; font-size:1.5rem; cursor:pointer;">›</button>
 
 {{-- ════════════════════════════════════════════════════════════════ --}}
 {{-- JAVASCRIPT — diisi oleh view child jika perlu tambahan script   --}}
